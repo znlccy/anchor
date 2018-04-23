@@ -1,0 +1,9 @@
+name: anchor
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/db_anchor?useUnicode=true&characterEncoding=utf8&useSSL=true
+    username: root
+    password: root
+server:
+  port: 8080

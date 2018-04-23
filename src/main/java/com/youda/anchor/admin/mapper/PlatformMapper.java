@@ -1,4 +1,5 @@
 package com.youda.anchor.admin.mapper;
 
-public interface AdminDao {
+public interface PlatformMapper {
+
 }

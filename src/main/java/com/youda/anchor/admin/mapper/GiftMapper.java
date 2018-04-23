@@ -1,4 +1,4 @@
 package com.youda.anchor.admin.mapper;
 
-public interface GiftDetailDao {
+public interface GiftMapper {
 }
