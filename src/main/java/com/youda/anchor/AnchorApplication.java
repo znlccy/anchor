@@ -6,6 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.Properties;
 
@@ -13,9 +14,11 @@ import java.util.Properties;
 @RestController
 public class AnchorApplication {
 
-    @RequestMapping(value = "/")
-    public String index() {
-        return "欢迎来到主播管理后台";
+    @RequestMapping(value = "/index")
+    public ModelAndView index(ModelAndView mv) {
+        mv.setViewName("/index");
+        mv.addObject("title","欢迎使用Thymeleaf");
+        return mv;
     }
 
     public static void main(String[] args) {

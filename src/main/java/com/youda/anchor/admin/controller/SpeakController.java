@@ -2,11 +2,9 @@ package com.youda.anchor.admin.controller;
 
 import com.youda.anchor.admin.mapper.SpeakMapper;
 import com.youda.anchor.admin.model.Speak;
+import com.youda.anchor.admin.service.SpeakService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -18,16 +16,34 @@ public class SpeakController {
      * 实现发言映射类的自动依赖注入
      */
     @Autowired
-    private SpeakMapper speakMapper;
+    private SpeakService speakService;
 
-    @RequestMapping(value = "/all")
+    /**
+     * @param: []
+     * @return: java.util.List<com.youda.anchor.admin.model.Speak>
+     */
+    @GetMapping(value = "/all")
     public List<Speak> getAll() {
-        List<Speak> speaks = speakMapper.getAll();
+        List<Speak> speaks = speakService.getAll();
         return speaks;
     }
 
+    /**
+     * @param: [id]
+     * @return: void
+     */
     @DeleteMapping(value = "/delete/{id}")
     public void delete(@PathVariable("id") Integer id) {
-        speakMapper.deleteById(id);
+        speakService.deleteById(id);
     }
+
+    /**
+     * @param: [id]
+     * @return: com.youda.anchor.admin.model.Speak
+     */
+    @GetMapping(value = "/one/{id}")
+    public Speak getOne(@PathVariable("id") Integer id) {
+        return speakService.getOne(id);
+    }
+
 }
