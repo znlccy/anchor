@@ -47,4 +47,9 @@ public interface SpeakService {
      */
     void deleteById(Integer id);
 
+    /**
+     * 声明删除所有数据
+     */
+    void deleteAll();
+
 }

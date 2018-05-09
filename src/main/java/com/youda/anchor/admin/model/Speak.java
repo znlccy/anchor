@@ -1,8 +1,9 @@
 package com.youda.anchor.admin.model;
 
 import javax.persistence.Entity;
+import java.io.Serializable;
 
-public class Speak {
+public class Speak implements Serializable  {
 
     /**
      * 声明发言主键

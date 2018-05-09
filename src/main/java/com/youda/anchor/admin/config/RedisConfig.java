@@ -11,6 +11,7 @@ import org.springframework.context.annotation.Configuration;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.PropertyAccessor;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.springframework.context.annotation.Primary;
 import org.springframework.data.redis.cache.RedisCacheManager;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.data.redis.core.RedisTemplate;
@@ -53,6 +54,7 @@ public class RedisConfig extends CachingConfigurerSupport {
      * @return: org.springframework.cache.CacheManager
      */
     @Bean
+    @Primary
     public CacheManager cacheManager(@SuppressWarnings("rawtypes")RedisTemplate redisTemplate) {
         RedisCacheManager cacheManager = new RedisCacheManager(redisTemplate);
         cacheManager.setDefaultExpiration(3000);

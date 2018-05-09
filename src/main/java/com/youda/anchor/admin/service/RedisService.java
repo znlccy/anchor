@@ -74,12 +74,12 @@ public class RedisService {
      * @param: [key]
      * @return: java.lang.String
      */
-    public Object get(final String key) {
-        Object result = null;
+    public String get(final String key) {
+        String result = null;
         try {
             redisTemplate.setValueSerializer(new StringRedisSerializer());
             ValueOperations<Serializable, Object> operations = redisTemplate.opsForValue();
-            result = operations.get(key);
+            result = operations.get(key).toString();
         } catch (Exception e) {
             e.printStackTrace();
         }

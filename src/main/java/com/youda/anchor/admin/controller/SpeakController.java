@@ -4,6 +4,7 @@ import com.youda.anchor.admin.mapper.SpeakMapper;
 import com.youda.anchor.admin.model.Speak;
 import com.youda.anchor.admin.service.SpeakService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -44,6 +45,12 @@ public class SpeakController {
     @GetMapping(value = "/one/{id}")
     public Speak getOne(@PathVariable("id") Integer id) {
         return speakService.getOne(id);
+    }
+
+    @PostMapping(value = "/add")
+    public void insert(@RequestBody Speak speak) {
+        /*System.out.println("数据" + speak.getBarragenum());*/
+        speakService.insert(speak);
     }
 
 }

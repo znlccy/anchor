@@ -3,6 +3,7 @@ package com.youda.anchor;
 import com.github.pagehelper.PageHelper;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -12,6 +13,7 @@ import java.util.Properties;
 
 @SpringBootApplication
 @RestController
+@EnableCaching
 public class AnchorApplication {
 
     @RequestMapping(value = "/index")
