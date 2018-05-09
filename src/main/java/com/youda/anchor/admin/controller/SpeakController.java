@@ -1,10 +1,8 @@
 package com.youda.anchor.admin.controller;
 
-import com.youda.anchor.admin.mapper.SpeakMapper;
 import com.youda.anchor.admin.model.Speak;
 import com.youda.anchor.admin.service.SpeakService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cache.annotation.Cacheable;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -20,6 +18,7 @@ public class SpeakController {
     private SpeakService speakService;
 
     /**
+     * 获取所有发言数据
      * @param: []
      * @return: java.util.List<com.youda.anchor.admin.model.Speak>
      */
@@ -30,6 +29,7 @@ public class SpeakController {
     }
 
     /**
+     * 删除一个发言数据
      * @param: [id]
      * @return: void
      */
@@ -39,18 +39,33 @@ public class SpeakController {
     }
 
     /**
+     * 查询一个发言数据
      * @param: [id]
      * @return: com.youda.anchor.admin.model.Speak
      */
-    @GetMapping(value = "/one/{id}")
-    public Speak getOne(@PathVariable("id") Integer id) {
+    @GetMapping(value = "/get/{id}")
+    public Speak get(@PathVariable("id") Integer id) {
         return speakService.getOne(id);
     }
 
+    /**
+     * 添加发言数据
+     * @param: [speak]
+     * @return: void
+     */
     @PostMapping(value = "/add")
     public void insert(@RequestBody Speak speak) {
-        /*System.out.println("数据" + speak.getBarragenum());*/
         speakService.insert(speak);
+    }
+
+    /**
+     * 更新发言数据
+     * @param: [speak]
+     * @return: void
+     */
+    @PutMapping(value = "/update")
+    public void update(@RequestBody Speak speak) {
+        speakService.update(speak);
     }
 
 }

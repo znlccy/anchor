@@ -21,14 +21,23 @@ import java.util.List;
 @Service
 public class SpeakServiceImpl implements SpeakService {
 
+    /**
+     * 自动依赖注入speakMapper
+     */
     @Autowired
     private SpeakMapper speakMapper;
 
+    /**
+     *
+     */
     @Override
     public List<Speak> getAll() {
         return speakMapper.getAll();
     }
 
+    /**
+     *
+     */
     @Cacheable(key="#id.toString()", value = "speak")
     @Override
     public Speak getOne(Integer id) {
@@ -47,10 +56,10 @@ public class SpeakServiceImpl implements SpeakService {
 
     }
 
-    @CacheEvict(key = "#p0")
+    @CacheEvict(key = "#id.toString()", value = "speakCache")
     @Override
     public void deleteById(Integer id) {
-
+        speakMapper.deleteById(id);
     }
 
     @CacheEvict(allEntries = true)
