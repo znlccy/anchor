@@ -6,6 +6,6 @@ package com.youda.anchor.admin.util;
  * @Version: v1.0.0
  * @Comment: 安全加密工具
  */
-public class SecurityUtils {
+public class SecurityUtil {
 
 }
