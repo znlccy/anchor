@@ -1,8 +1,12 @@
 package com.youda.anchor.admin.model;
 
-import javax.persistence.Entity;
 import java.io.Serializable;
-
+/**
+ * @Author: Administrator
+ * @Datetime: 2018/5/10-15:09
+ * @Version: v1.0.0
+ * @Comment: 发言实体类
+ */
 public class Speak implements Serializable  {
 
     /**

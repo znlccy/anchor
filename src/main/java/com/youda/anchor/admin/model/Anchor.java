@@ -1,11 +1,14 @@
 package com.youda.anchor.admin.model;
+
+import java.io.Serializable;
+
 /**
  * @Author: Administrator
  * @Datetime: 2018/5/10-10:33
  * @Version: v1.0.0
  * @Comment: 主播实体类
  */
-public class Anchor {
+public class Anchor implements Serializable {
 
     /**
      * 声明主播主键
