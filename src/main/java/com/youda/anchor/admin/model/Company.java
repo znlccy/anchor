@@ -7,4 +7,5 @@ package com.youda.anchor.admin.model;
  * @Comment: 公司实体类
  */
 public class Company {
+
 }
