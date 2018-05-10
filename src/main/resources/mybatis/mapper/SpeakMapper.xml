@@ -51,4 +51,11 @@
                 where
                   id = #{id}
         </delete>
+
+        <!-- 删除所有发言数据 -->
+        <delete id="deleteAll">
+               delete
+               from
+                  tb_speak
+        </delete>
 </mapper>

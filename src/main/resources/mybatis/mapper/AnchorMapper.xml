@@ -1,5 +1,92 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.youda.anchor.mapper.AnchorMapper">
+<mapper namespace="com.youda.anchor.admin.mapper.AnchorMapper">
+
+    <!-- 实现返回的数据类型 -->
+    <resultMap id="BaseResultMap" type="com.youda.anchor.admin.model.Anchor">
+        <id column="id" property="id" jdbcType="INTEGER" />
+        <result column="pid" property="pid" jdbcType="INTEGER" />
+        <result column="cid" property="cid" jdbcType="INTEGER" />
+        <result column="nickname" property="nickname" jdbcType="VARCHAR" />
+        <result column="mobile" property="mobile" jdbcType="VARCHAR" />
+        <result column="password" property="password" jdbcType="VARCHAR" />
+        <result column="category" property="category" jdbcType="VARCHAR" />
+        <result column="link" property="link" jdbcType="VARCHAR" />
+        <result column="avatar" property="avatar" jdbcType="VARCHAR" />
+        <result column="roomid" property="roomid" jdbcType="INTEGER" />
+        <result column="liveurl" property="liveurl" jdbcType="VARCHAR" />
+        <result column="livestatus" property="livestatus" jdbcType="VARCHAR" />
+        <result column="sign" property="sign" jdbcType="VARCHAR" />
+        <result column="account" property="account" jdbcType="VARCHAR" />
+        <result column="status" property="status" jdbcType="VARCHAR" />
+        <result column="group" property="group" jdbcType="VARCHAR" />
+    </resultMap>
+
+    <!-- 声明查询的 -->
+    <sql id="Base_Column_List">
+        id,pid,cid,nickname,mobile,password,category,link,avartar,roomid,liveurl,livestatus,sign,account,status,group
+    </sql>
+
+    <!-- 查询所有主播数据 -->
+    <select id="getAll" resultMap="BaseResultMap">
+        select
+          <include refid="Base_Column_List"/>
+        from
+          tb_anchor
+    </select>
+
+    <!-- 查找一个主播数据 -->
+    <select id="getOne" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        select
+          <include refid="Base_Column_List" />
+        from
+          tb_anchor
+        where id = #{id}
+    </select>
+
+    <!-- 插入一个主播数据 -->
+    <insert id="insert" parameterType="com.youda.anchor.admin.model.Anchor">
+        insert into
+          tb_anchor
+        values
+          (#{id}, #{pid}, #{cid}, #{nickname}, #{mobile}, #{password}, #{category}, #{link}, #{avartar}, #{roomid}, #{liveurl}, #{livestatus}, #{sign}, #{account}, #{status}, #{group});
+    </insert>
+
+    <!-- 更新一条数据 -->
+    <update id="update" parameterType="com.youda.anchor.admin.model.Anchor">
+        update
+          tb_anchor
+        set
+          <if test="pid != null">pid = #{pid},</if>
+          <if test="cid != null">cid = #{cid},</if>
+          <if test="nickname != null">nickname = #{nickname},</if>
+          <if test="mobile != null">mobile = #{mobile},</if>
+          <if test="password != null">password = #{password},</if>
+          <if test="cetegory != null">category = #{category},</if>
+          <if test="link != null">link = #{link},</if>
+          <if test="avartar != null">avartar = #{avartar},</if>
+          <if test="roomid != null">roomid = #{roomid},</if>
+          <if test="liveurl != null">liveurl = #{liveurl},</if>
+          <if test="livestatus != null">livestatus = #{livestatus},</if>
+          <if test="sign != null">sign = #{sign},</if>
+          <if test="account != null">account = #{accout},</if>
+          <if test="status != null">status = #{status},</if>
+          <if test="group != null">group = #{group}</if>
+    </update>
+
+    <!-- 实现删除一条数据 -->
+    <delete id="deleteById" parameterType="java.lang.Integer">
+        delete
+        from
+          tb_anchor
+        where id = #{id}
+    </delete>
+
+    <!-- 实现删除所有数据 -->
+    <delete id="deleteAll">
+        delete
+        from
+          tb_anchor
+    </delete>
 
 </mapper>
