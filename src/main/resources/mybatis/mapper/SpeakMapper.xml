@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.youda.anchor.admin.mapper.SpeakMapper">
-        <resultMap id="BaseResultMap" type="com.youda.anchor.admin.model.Speak">
+        <resultMap id="SpeakBaseResultMap" type="com.youda.anchor.admin.model.Speak">
                 <id column="id" property="id" jdbcType="INTEGER" />
                 <result column="barragepeople" property="barragepeople" jdbcType="INTEGER" />
                 <result column="barragenum" property="barragenum" jdbcType="INTEGER" />
@@ -13,14 +13,14 @@
         </sql>
 
         <!-- 查询所有数据 -->
-        <select id="getAll" resultMap="BaseResultMap">
+        <select id="getAll" resultMap="SpeakBaseResultMap">
                 select
                 <include refid="Base_Column_List" />
                 from tb_speak
         </select>
 
         <!-- 查询单条数据 -->
-        <select id="getOne" parameterType="java.lang.Integer" resultMap="BaseResultMap" >
+        <select id="getOne" parameterType="java.lang.Integer" resultMap="SpeakBaseResultMap" >
                 select
                 <include refid="Base_Column_List"/>
                 from tb_speak

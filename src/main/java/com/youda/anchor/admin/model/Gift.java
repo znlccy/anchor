@@ -27,7 +27,7 @@ public class Gift implements Serializable {
     /**
      * 声明礼物时间
      */
-    private Time time;
+    private Time hour;
 
     /**
      * 声明平台主键
@@ -105,8 +105,8 @@ public class Gift implements Serializable {
      * @param: []
      * @return: java.sql.Time
      */
-    public Time getTime() {
-        return time;
+    public Time getHour() {
+        return hour;
     }
 
     /**
@@ -114,8 +114,8 @@ public class Gift implements Serializable {
      * @param: [time]
      * @return: void
      */
-    public void setTime(Time time) {
-        this.time = time;
+    public void setHour(Time hour) {
+        this.hour = hour;
     }
 
     /**

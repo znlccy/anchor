@@ -1,5 +1,6 @@
 package com.youda.anchor.admin.service;
 
+import com.github.pagehelper.Page;
 import com.youda.anchor.admin.model.Gift;
 
 import java.util.List;
@@ -18,6 +19,13 @@ public interface GiftService {
      * @return: java.util.List<com.youda.anchor.admin.model.Gift>
      */
     List<Gift> getAll();
+
+    /**
+     * 实现分页查询
+     * @param: [pageNo, pageSize]
+     * @return: com.github.pagehelper.Page<com.youda.anchor.admin.model.Gift>
+     */
+    List<Gift> getByPage(int pageNo, int pageSize) throws Exception;
 
     /**
      * 声明获得一个礼物
@@ -53,4 +61,6 @@ public interface GiftService {
      * @return: void
      */
     void deleteAll();
+
+
 }

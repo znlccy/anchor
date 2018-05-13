@@ -1,5 +1,6 @@
 package com.youda.anchor.admin.mapper;
 
+import com.github.pagehelper.Page;
 import com.youda.anchor.admin.model.Gift;
 import org.apache.ibatis.annotations.Mapper;
 
@@ -55,5 +56,12 @@ public interface GiftMapper {
      * @return: void
      */
     void deleteAll();
+
+    /**
+     * 实现分页查询礼物
+     * @param: []
+     * @return: com.github.pagehelper.Page<com.youda.anchor.admin.model.Gift>
+     */
+    Page<Gift> getByPage();
 
 }

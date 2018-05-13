@@ -1,5 +1,7 @@
 package com.youda.anchor.admin.serviceImpl;
 
+import com.github.pagehelper.Page;
+import com.github.pagehelper.PageHelper;
 import com.youda.anchor.admin.mapper.GiftMapper;
 import com.youda.anchor.admin.model.Gift;
 import com.youda.anchor.admin.service.GiftService;
@@ -7,7 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.CachePut;
 import org.springframework.cache.annotation.Cacheable;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
@@ -17,6 +19,7 @@ import java.util.List;
  * @Version: v1.0.0
  * @Comment: 礼物服务实现类
  */
+@Service
 public class GiftServiceImpl implements GiftService {
 
     /**
@@ -33,6 +36,20 @@ public class GiftServiceImpl implements GiftService {
     @Override
     public List<Gift> getAll() {
         return giftMapper.getAll();
+    }
+
+    /**
+     * 实现分页查询礼物
+     * @param: [pageNo, pageSize]
+     * @return: com.github.pagehelper.Page<com.youda.anchor.admin.model.Gift>
+     */
+    @Override
+    public List<Gift> getByPage(int pageNo, int pageSize) throws Exception{
+        //使用分页插件
+        PageHelper.startPage(pageNo, pageSize);
+        //获取
+        List<Gift> gifts = giftMapper.getByPage();
+        return gifts;
     }
 
     /**
