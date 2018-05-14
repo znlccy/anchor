@@ -164,6 +164,47 @@
             <version>1.5.9.RELEASE</version>
         </dependency>
 
+        <!-- lucene-queryparser对分词索引查询解析 -->
+        <dependency>
+            <groupId>org.apache.lucene</groupId>
+            <artifactId>lucene-queryparser</artifactId>
+            <version>7.3.0</version>
+        </dependency>
+
+        <!-- lucene-highlighter高亮显示 -->
+        <dependency>
+            <groupId>org.apache.lucene</groupId>
+            <artifactId>lucene-highlighter</artifactId>
+            <version>7.3.0</version>
+        </dependency>
+
+        <!-- lucene-analyzers-smartcn中文分词器 SmartChineseAnalyzer  smartcn分词器 需要lucene依赖 且和lucene版本同步 -->
+        <dependency>
+            <groupId>org.apache.lucene</groupId>
+            <artifactId>lucene-analyzers-smartcn</artifactId>
+            <version>7.3.0</version>
+        </dependency>
+
+        <!-- ik-analyzers中文分词器 -->
+        <dependency>
+            <groupId>cn.bestwu</groupId>
+            <artifactId>ik-analyzers</artifactId>
+            <version>5.1.0</version>
+        </dependency>
+
+        <!-- mmseg4j-solr分词器 -->
+        <dependency>
+            <groupId>com.chenlb.mmseg4j</groupId>
+            <artifactId>mmseg4j-solr</artifactId>
+            <version>2.4.0</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.apache.solr</groupId>
+                    <artifactId>solr-core</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
     </dependencies>
 
     <build>

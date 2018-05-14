@@ -37,7 +37,7 @@ public class GiftController {
      */
     @GetMapping(value = "/page")
     @ResponseBody
-    public List<Gift> getByPage(int pageNum, int pageSize) throws Exception{
+    public List<Gift> getByPage(int pageNum, int pageSize){
         return giftService.getByPage(pageNum, pageSize);
     }
 
@@ -48,7 +48,7 @@ public class GiftController {
      */
     @GetMapping(value = "/all")
     @ResponseBody
-    public String getAll() {
+    public String getAll(){
         List<Gift> gifts = giftService.getAll();
         return gifts.toString();
     }

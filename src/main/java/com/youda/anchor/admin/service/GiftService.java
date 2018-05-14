@@ -25,7 +25,7 @@ public interface GiftService {
      * @param: [pageNo, pageSize]
      * @return: com.github.pagehelper.Page<com.youda.anchor.admin.model.Gift>
      */
-    List<Gift> getByPage(int pageNo, int pageSize) throws Exception;
+    List<Gift> getByPage(int pageNo, int pageSize);
 
     /**
      * 声明获得一个礼物

@@ -31,11 +31,12 @@
     </select>
 
     <!-- 实现获取一个平台数据 -->
-    <select id="getOne" resultMap="PlatformBaseResultMap">
+    <select id="getOne" parameterType="java.lang.Integer" resultMap="PlatformBaseResultMap">
         select
           <include refid="Base_Column_List" />
         from
           tb_platform
+        where id = #{id}
     </select>
 
     <!-- 实现添加一个平台数据 -->

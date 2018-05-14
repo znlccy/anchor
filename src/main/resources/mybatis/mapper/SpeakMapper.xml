@@ -9,53 +9,56 @@
 
         <!-- 声明查询的列 -->
         <sql id="Base_Column_List">
-                id, barragepeople, barragenum
+            id, barragepeople, barragenum
         </sql>
 
         <!-- 查询所有数据 -->
         <select id="getAll" resultMap="SpeakBaseResultMap">
-                select
-                <include refid="Base_Column_List" />
-                from tb_speak
+            select
+            <include refid="Base_Column_List" />
+            from tb_speak
         </select>
 
         <!-- 查询单条数据 -->
         <select id="getOne" parameterType="java.lang.Integer" resultMap="SpeakBaseResultMap" >
-                select
-                <include refid="Base_Column_List"/>
-                from tb_speak
-                where id = #{id}
+            select
+            <include refid="Base_Column_List"/>
+            from tb_speak
+            where id = #{id}
         </select>
 
         <!-- 插入一条数据 -->
         <insert id="insert" parameterType="com.youda.anchor.admin.model.Speak">
-                insert into
-                  tb_speak(id, barragepeople, barragenum)
-                values
-                  (#{id}, #{barragepeople}, #{barragenum})
+            <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER">
+                select LAST_INSERT_ID()
+            </selectKey>
+            insert into
+              tb_speak
+            values
+              (#{id}, #{barragepeople}, #{barragenum})
         </insert>
 
         <!-- 更新一条数据 -->
         <update id="update" parameterType="com.youda.anchor.admin.model.Speak">
-                update
-                  tb_speak
-                set
-                  <if test="barragepeople != null">barragepeople = #{barragepeople},</if>
-                  <if test="barragenum != null">barragenum = #{barragenum}</if>
+            update
+              tb_speak
+            set
+              <if test="barragepeople != null">barragepeople = #{barragepeople},</if>
+              <if test="barragenum != null">barragenum = #{barragenum}</if>
         </update>
 
         <!-- 删除一条数据 -->
         <delete id="deleteById" parameterType="java.lang.Integer">
-                delete from
-                  tb_speak
-                where
-                  id = #{id}
+            delete from
+              tb_speak
+            where
+              id = #{id}
         </delete>
 
         <!-- 删除所有发言数据 -->
         <delete id="deleteAll">
-               delete
-               from
-                  tb_speak
+           delete
+           from
+              tb_speak
         </delete>
 </mapper>

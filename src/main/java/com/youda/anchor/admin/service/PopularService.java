@@ -1,19 +1,16 @@
-package com.youda.anchor.admin.mapper;
+package com.youda.anchor.admin.service;
 
-import com.github.pagehelper.Page;
 import com.youda.anchor.admin.model.Popular;
-import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
 
 /**
  * @Author: Administrator
- * @Datetime: 2018/5/14-11:58
+ * @Datetime: 2018/5/14-14:36
  * @Version: v1.0.0
- * @Comment: 人气数据映射接口
+ * @Comment: 人气服务接口类
  */
-@Mapper
-public interface PopularMapper {
+public interface PopularService {
 
     /**
      * 声明获得所有人气数据
@@ -27,7 +24,7 @@ public interface PopularMapper {
      * @param: [pageNum, pageSize]
      * @return: java.util.List<com.youda.anchor.admin.model.Popular>
      */
-    Page<Popular> getByPage();
+    List<Popular> getByPage(int pageNum, int pageSize);
 
     /**
      * 声明获得一个人气数据
@@ -63,4 +60,5 @@ public interface PopularMapper {
      * @return: void
      */
     void deleteAll();
+
 }

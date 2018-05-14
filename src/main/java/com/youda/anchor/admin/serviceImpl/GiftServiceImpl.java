@@ -44,7 +44,7 @@ public class GiftServiceImpl implements GiftService {
      * @return: com.github.pagehelper.Page<com.youda.anchor.admin.model.Gift>
      */
     @Override
-    public List<Gift> getByPage(int pageNo, int pageSize) throws Exception{
+    public List<Gift> getByPage(int pageNo, int pageSize){
         //使用分页插件
         PageHelper.startPage(pageNo, pageSize);
         //获取
