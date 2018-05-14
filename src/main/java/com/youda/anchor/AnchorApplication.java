@@ -5,17 +5,27 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.annotation.Bean;
+import org.springframework.scheduling.annotation.EnableAsync;
+import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
+import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 import java.util.Properties;
 
 @SpringBootApplication
 @RestController
 @EnableCaching
+@EnableSwagger2
+@EnableScheduling
 public class AnchorApplication {
 
+    /**
+     * 初始化界面
+     * @param mv
+     * @return
+     */
     @RequestMapping(value = "/index")
     public ModelAndView index(ModelAndView mv) {
         mv.setViewName("/index");
@@ -23,6 +33,10 @@ public class AnchorApplication {
         return mv;
     }
 
+    /**
+     * 主函数
+     * @param args
+     */
     public static void main(String[] args) {
         SpringApplication.run(AnchorApplication.class, args);
     }

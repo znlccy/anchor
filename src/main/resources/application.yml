@@ -1,3 +1,17 @@
 spring:
   profiles:
     active: dev
+  mail:
+    host: smtp.163.com
+    username: z********@***.com
+    password: z********0704
+    port: 25
+    default-encoding: utf-8
+    protocol: smtp
+    properties:
+      mail:
+        smth:
+          auth: true
+          starttls:
+            enable: true
+            required: true
