@@ -1,19 +1,16 @@
-package com.youda.anchor.admin.mapper;
+package com.youda.anchor.admin.service;
 
-import com.github.pagehelper.Page;
 import com.youda.anchor.admin.model.Platform;
-import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
 
 /**
  * @Author: Administrator
- * @Datetime: 2018/5/13-17:45
+ * @Datetime: 2018/5/13-18:03
  * @Version: v1.0.0
- * @Comment: 平台映射类
+ * @Comment: 平台服务接口类
  */
-@Mapper
-public interface PlatformMapper {
+public interface PlatformService {
 
     /**
      * 声明查询所有平台数据
@@ -27,7 +24,7 @@ public interface PlatformMapper {
      * @param: []
      * @return: com.github.pagehelper.Page<com.youda.anchor.admin.model.Platform>
      */
-    Page<Platform> getByPage() throws Exception;
+    List<Platform> getByPage(int pageNum, int pageSize) throws Exception;
 
     /**
      * 声明查询单个平台数据
