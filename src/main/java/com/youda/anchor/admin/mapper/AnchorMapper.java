@@ -22,6 +22,13 @@ public interface AnchorMapper {
     List<Anchor> getAll();
 
     /**
+     * 分页获取主播
+     * @param: []
+     * @return: java.util.List<com.youda.anchor.admin.model.Anchor>
+     */
+    List<Anchor> getByPage();
+
+    /**
      * 获取一个主播
      * @param: [id]
      * @return: com.youda.anchor.admin.model.Anchor
@@ -49,4 +56,10 @@ public interface AnchorMapper {
      */
     void deleteById(Integer id);
 
+    /**
+     * 删除所有主播数据
+     * @param: []
+     * @return: void
+     */
+    void deleteAll();
 }
