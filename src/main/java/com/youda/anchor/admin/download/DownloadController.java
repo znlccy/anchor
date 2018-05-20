@@ -27,6 +27,11 @@ public class DownloadController {
     @Autowired
     private DownloadService downloadService;
 
+    /**
+     * 实现下载文件功能
+     * @param: [request, response]
+     * @return: java.lang.String
+     */
     @RequestMapping(value = "/download")
     public String download(HttpServletRequest request, HttpServletResponse response) {
         return downloadService.download(request, response);
