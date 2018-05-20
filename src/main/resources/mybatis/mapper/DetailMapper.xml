@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.youda.anchor.admin.mapper.DetailMapper">
+
+    <!-- 实现返回的数据类型 -->
+    <resultMap id="DetailBaseResultMap" type="com.youda.anchor.admin.model.Detail">
+        <id column="id" property="id" jdbcType="INTEGER" />
+        <result column="time" property="time" jdbcType="TIME" />
+        <result column="pid" property="pid" jdbcType="INTEGER" />
+        <result column="aid" property="aid" jdbcType="INTEGER" />
+        <result column="username" property="username" jdbcType="VARCHAR" />
+        <result column="content" property="content" jdbcType="VARCHAR" />
+        <result column="platformprice" property="platformprice" jdbcType="DECIMAL" />
+        <result column="realprice" property="realprice" jdbcType="DECIMAL" />
+    </resultMap>
+
+    <!-- 实现查询的字段 -->
+    <sql id="Base_Column_List">
+        id, time, pid, aid, username, content, platformprice, realprice
+    </sql>
+
+    <!-- 实现获得所有详情数据 -->
+    <select id="getAll" resultMap="DetailBaseResultMap">
+        select
+          <include refid="Base_Column_List" />
+        from
+          tb_detail
+    </select>
+
+    <!-- 实现分页获得详情数据 -->
+    <select id="getByPage" resultMap="DetailBaseResultMap">
+        select
+          <include refid="Base_Column_List" />
+        from
+          tb_detail
+    </select>
+
+    <!-- 实现获得一个详情数据 -->
+    <select id="getOne" parameterType="java.lang.Integer" resultMap="com.youda.anchor.admin.model.Detail">
+        select
+          <include refid="Base_Column_List" />
+        from
+          tb_detail
+        where id = #{id}
+    </select>
+
+    <!-- 实现添加一个详情数据 -->
+    <insert id="insert" parameterType="com.youda.anchor.admin.model.Detail">
+        insert
+        into
+          tb_detail
+        values
+          (#{time}, #{pid}, #{aid}, #{username}, #{content}, #{platformprice}, #{realprice})
+    </insert>
+
+    <!-- 实现更新一个详情数据 -->
+    <update id="update" parameterType="com.youda.anchor.admin.model.Detail">
+        update
+          tb_detail
+        set
+          <if test="time != null">time = #{time},</if>
+          <if test="pid != null">pid = #{pid},</if>
+          <if test="aid != null">aid = #{aid},</if>
+          <if test="username != null">username = #{username},</if>
+          <if test="content != null">content = #{content},</if>
+          <if test="platformprice != null">platformprice = #{platformprice},</if>
+          <if test="realprice != null">realprice = #{realprice}</if>
+    </update>
+
+    <!-- 实现删除一个详情数据 -->
+    <delete id="deleteById" parameterType="java.lang.Integer">
+        delete
+        from
+          tb_detail
+        where id = #{id}
+    </delete>
+
+    <!-- 实现删除所有详情数据 -->
+    <delete id="deletaAll">
+        delete
+        from
+          tb_detail
+    </delete>
+</mapper>
