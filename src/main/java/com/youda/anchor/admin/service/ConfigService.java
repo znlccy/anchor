@@ -1,19 +1,17 @@
-package com.youda.anchor.admin.mapper;
+package com.youda.anchor.admin.service;
 
 import com.github.pagehelper.Page;
 import com.youda.anchor.admin.model.Config;
-import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
 
 /**
  * @Author: Administrator
- * @Datetime: 2018/5/20-14:09
+ * @Datetime: 2018/5/20-16:05
  * @Version: v1.0.0
- * @Comment: 配置映射类
+ * @Comment: 
  */
-@Mapper
-public interface ConfigMapper {
+public interface ConfigService {
 
     /**
      * 声明获得所有配置信息
@@ -27,7 +25,7 @@ public interface ConfigMapper {
      * @param: []
      * @return: com.github.pagehelper.Page<com.youda.anchor.admin.model.Config>
      */
-    Page<Config> getByPage();
+    List<Config> getByPage();
 
     /**
      * 声明获得一个配置信息

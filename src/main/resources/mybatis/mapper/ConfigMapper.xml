@@ -1,5 +1,87 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.youda.anchor.mapper.ConfigMapper">
+<mapper namespace="com.youda.anchor.admin.mapper.ConfigMapper">
 
+    <!-- 实现返回的数据类型 -->
+    <resultMap id="ConfigBaseResultMap" type="com.youda.anchor.admin.model.Config">
+        <id column="id" property="id" jdbcType="INTEGER" />
+        <result column="name" property="name" jdbcType="VARCHAR" />
+        <result column="group" property="group" jdbcType="VARCHAR" />
+        <result column="title" property="title" jdbcType="VARCHAR" />
+        <result column="tip" property="tip" jdbcType="VARCHAR" />
+        <result column="type" property="type" jdbcType="VARCHAR" />
+        <result column="value" property="value" jdbcType="VARCHAR" />
+        <result column="content" property="content" jdbcType="VARCHAR" />
+        <result column="rule" property="rule" jdbcType="VARCHAR" />
+        <result column="extend" property="extend" jdbcType="VARCHAR" />
+    </resultMap>
+
+    <!-- 实现查询的字段 -->
+    <sql id="Base_Column_List">
+        id, name, group, title, tip, type, value, content, rule, extend
+    </sql>
+
+    <!-- 实现查询所有配置信息 -->
+    <select id="getAll" resultMap="ConfigBaseResultMap">
+        select
+          <include refid="Base_Column_List" />
+        from
+          tb_config
+    </select>
+
+    <!-- 实现分页查询配置信息 -->
+    <select id="getByPage" resultMap="ConfigBaseResultMap">
+        select 
+          <include refid="Base_Column_List" />
+        from
+          tb_config
+    </select>
+
+    <!-- 实现返回一个配置信息 -->
+    <select id="getOne" parameterType="java.lang.Integer" resultMap="com.youda.anchor.admin.model.Config">
+        select
+        from
+          tb_config
+        where id = #{id}
+    </select>
+
+    <!-- 实现添加一个配置信息 -->
+    <insert id="insert" parameterType="com.youda.anchor.admin.model.Config">
+        insert
+        into
+          tb_config
+        values
+          (#{name}, #{group}, #{title}, #{tip}, #{type}, #{value}, #{content}, #{rule}, #{extend})
+    </insert>
+
+    <!-- 实现更新一个配置信息 -->
+    <update id="update" parameterType="com.youda.anchor.admin.model.Config">
+        update
+          tb_config
+        set
+          <if test="name != null">name = #{name},</if>
+          <if test="group != null">group = #{group},</if>
+          <if test="title != null">title = #{title},</if>
+          <if test="tip != null">tip = #{tip},</if>
+          <if test="type != null">type = #{type},</if>
+          <if test="value != null">value = #{value},</if>
+          <if test="content != null">content = #{content},</if>
+          <if test="rule != null">rule = #{rule},</if>
+          <if test="extend != null">extend = #{extend}</if>
+    </update>
+
+    <!-- 实现删除一个配置信息 -->
+    <delete id="deleteById" parameterType="java.lang.Integer">
+        delete
+        from
+          tb_config
+        where id = #{id}
+    </delete>
+
+    <!-- 实现删除所有配置信息 -->
+    <delete id="deleteAll">
+        delete
+        from
+          tb_config
+    </delete>
 </mapper>
