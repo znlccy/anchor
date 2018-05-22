@@ -1,4 +1,6 @@
 package com.youda.anchor.admin.model;
 
-public class AdminGroup {
+import java.io.Serializable;
+
+public class AdminGroup implements Serializable {
 }
